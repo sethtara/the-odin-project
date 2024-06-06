@@ -1,33 +1,36 @@
 
 arr=['rock','paper','scissors'];
+const playBtn=document.querySelector(".btns");
+const board=document.querySelector(".board");
+
+playBtn.addEventListener("click",(e)=>{
+    const humanSelection=e.target.innerText.toLowerCase();
+    const computerSelection = getRandomInt(3);
+    playRound(humanSelection, arr[computerSelection]);
+});
 
 
+let result=""
 function playRound(humanChoice, computerChoice) {
     if(humanChoice === computerChoice) {
-        alert('draw');
+        board.innerText="Draw";
         return 0;    }
     else if(humanChoice==="scissors" && computerChoice === "paper"){
-        alert('you won');
+        board.innerText="You Won";
         return 0;    }
     else if(humanChoice==="rock" && computerChoice === "scissors"){
-        alert('you won');
+        board.innerText="You Won";
         return 0;    }
     else if(humanChoice==="paper" && computerChoice === "rock"){
-        alert('you won');
+        board.innerText="You Won";
         return 0;
     }
     else {
-        alert('you lost');
+        board.innerText="You Lost";
         return 0;
     }
-
-
 }
 
-const humanSelection = prompt("Rock, Paper, Scissor:");
-const computerSelection = getRandomInt(3);
-
-playRound(humanSelection, computerSelection);
 
 
 function getRandomInt(max) {
